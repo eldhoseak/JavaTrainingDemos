@@ -13,5 +13,10 @@ public class SetExample {
 		set.add("second"); // duplicate, not added
 		set.add(new Integer(4)); // duplicate, not added
 		System.out.println(set);
+		
+		set.remove("one");
+		System.out.println("after removal "+set);
+		
+		System.out.println("as array "+set.toArray());
 	}
 }
