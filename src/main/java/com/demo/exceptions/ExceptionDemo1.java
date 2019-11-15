@@ -4,21 +4,18 @@ class ExceptionDemo1  {
 	// If the class file is not found then handle the error
 	// by displaying error message and returning 0
 
-	public int error(){
+	public int calculate(int a, int b) throws MyException{
 		int status = 0;
-		try{
-			Object o = Class.forName("java.lang.String1").newInstance();
-			status = 1;
-		}catch (ClassNotFoundException e){
-			System.out.println("Please check the config files" + e);
+		try {
+			int c=a/b;
+			System.out.println("Value of C is : " + c);
+			}
+		catch(ArithmeticException e) {
+			throw new MyException(e.getMessage());
+		}finally {		
+			System.out.println("inside finally");
 		}
-		catch (IllegalAccessException e){
-			System.out.println("Please check the config files" + e);
-		}
-		catch (InstantiationException e){
-			System.out.println("Please check the config files"+ e);
-		}
-
+       System.out.println("after exception throws.");
 		return status;
 	}
 
@@ -27,7 +24,18 @@ class ExceptionDemo1  {
 		ExceptionDemo1 e = new ExceptionDemo1();
 		// we are not handling the error here
 		System.out.println(" before method call");
-		System.out.println(" after method call  " + e.error());
+		try {
+			System.out.println(" after method call  " + e.calculate(5,0));
+		} catch (MyException e1) {
+			System.out.println("inside MyException handler "+ e1.getMessage());
+		}
 	}
 }
 
+class MyException extends Exception{
+	public MyException(String s) 
+    { 
+        // Call constructor of parent Exception 
+        super(s); 
+    } 
+}
