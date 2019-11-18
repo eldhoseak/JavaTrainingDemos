@@ -6,4 +6,5 @@ This project is used to demonstrate the concepts in Java like
 3. Interfaces
 4. Threads
 5. Streams
-6. jdbc
+6. JDBC
+7. Serialization
