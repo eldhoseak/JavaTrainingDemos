@@ -1,38 +1,31 @@
 package com.demo.interfaces;
 
 interface A{
-	public void display();
+	public void displayA();
 }
-class B implements A{
 
-	public void display() {
-		// TODO Auto-generated method stub
-		System.out.println("Inside class B");
-	}
-
+interface B extends A{
+	public void displayB();
 }
-class C implements A{
 
-	public void display() {
+class C implements B{
+
+	public void displayA() {
 		// TODO Auto-generated method stub
-		System.out.println("inside class C");
+		System.out.println("implement displayA");
 	}
-
+	
+	public void displayB() {
+		// TODO Auto-generated method stub
+		System.out.println("implement displayB");
+	}
 }
 
 public class TestInterface {
 	public static void main(String args[])
 	{
-		B ob1=new B();
-		ob1.display();
-
-		C ob2=new C();
-		ob2.display();
-
-		A a=new B();
-		a.display();
-		C c= (C)a;
-		c.display();
+		C ob1=new C();
+		ob1.displayA();
 	}
 
 }
